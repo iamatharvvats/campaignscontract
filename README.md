@@ -134,6 +134,55 @@ contract Campaigns_Funding_Project {
 }
 //Creates a new array activeCampaigns with a size equal to the number of active campaigns and populates it with active campaigns and Returns the array of active campaigns to the caller.
 ```
+
+The Funding Platform smart contract allows users to create campaigns, fund projects, and view active campaigns. It is designed to facilitate crowdfunding for various causes and projects on the Ethereum blockchain.
+
+Smart Contract Overview
+Campaign Struct
+creator: Address of the campaign creator.
+cause: Description of the campaign's cause.
+futurePlans: Description of the campaign's future plans.
+startDate: Timestamp indicating the campaign start date.
+endDate: Timestamp indicating the campaign end date.
+goalAmount: Funding goal for the campaign.
+totalFunds: Total funds raised for the campaign.
+funders: Mapping of funders' addresses to their contributed amounts.
+Functions
+createCampaign
+Description: Allows the contract owner to create a new campaign.
+# Parameters:
+cause: Description of the campaign's cause.
+futurePlans: Description of the campaign's future plans.
+startDate: Timestamp indicating the campaign start date.
+endDate: Timestamp indicating the campaign end date.
+goalAmount: Funding goal for the campaign.
+Usage: Only the contract owner can create new campaigns using this function.
+fundProject
+Description: Allows users to fund a specific campaign.
+Parameters:
+campaignId: Index of the campaign in the campaigns array.
+Usage: Users can fund a campaign by specifying the campaign ID and sending Ether along with the transaction.
+getAvailableProjects
+Description: Allows users to view active campaigns.
+Usage: Users can call this function to retrieve a list of active campaigns (campaigns within their start and end dates).
+# How to Use
+Deploy the Contract:
+
+Deploy the Funding Platform contract on a compatible Ethereum network (Remix IDE, Ethereum Mainnet, Ropsten Testnet, etc.).
+Creating a Campaign:
+
+After deploying the contract, use the createCampaign function to create new campaigns by providing the necessary details (cause, future plans, start date, end date, goal amount). Only the contract owner can create campaigns.
+Funding a Campaign:
+
+Users can fund a specific campaign by calling the fundProject function with the desired campaignId and sending Ether along with the transaction. Each user can fund a campaign only once.
+Viewing Active Campaigns:
+
+Users can call the getAvailableProjects function to retrieve a list of active campaigns. This function returns an array of active campaigns that are within their specified start and end dates.
+# Events
+CampaignCreated(uint256 indexed campaignId, address indexed creator, string cause): Emitted when a new campaign is created.
+ProjectFunded(uint256 indexed campaignId, address indexed funder, uint256 amount): Emitted when a campaign is funded by a user.
+# Links :-
+
 Deployed Address Sepolia Etherscan Link : https://sepolia.etherscan.io/tx/0x5c53c46fe7785f69698df9d8b3f03277b63e2cacbc3eda409133db655c15a440
 
 Campaign Creation Link : https://sepolia.etherscan.io/tx/0xacf5fc216d6c0ce0a49d15db12d12e26ee714eec904174ebb13ddcff035408ea
